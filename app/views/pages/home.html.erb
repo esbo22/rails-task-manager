@@ -1,0 +1,27 @@
+<h1>My tasks</h1>
+<div>
+  <ul>
+    <% @tasks.each do |task| %>
+      <li>
+        <p><%= task['title'] %></p>
+        <%= link_to "Details", task_path(task) %>
+        <!-- <div>
+          <input type="checkbox" id="scales" name="scales"
+            checked>
+          <label for="title"></label>
+        </div> -->
+        <%= form_for(@task) do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.label :details %>
+        <%= f.text_field :details %>
+
+        <%= f.submit %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to 'Discover your tasks', tasks_path %>
